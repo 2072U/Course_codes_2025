@@ -7,14 +7,15 @@ def bis(f,l,r,eps_x,eps_f,kMax):
     a = l
     b = r
     conv = False
-    val = f(a)                          # Correct this mistake! "val" must be updated
-    for k in range(kMax):               # when the left boundary is updated!
+    val = f(a)
+    for k in range(kMax):
         m = (a+b)/2.0
         newval = f(m)
         if val * newval < 0.0:          # Bisection step: discard half the domain.
             b = m
         else:
             a = m
+            val = newval                # Missing in the initial commit: update the function value for the left boundary.
         err = abs(b-a)                  # Upper bound for error.
         res = abs(f(m))                 # Residual.
         if err < eps_x and res < eps_f: # If converged, set convergence flag and exit.
