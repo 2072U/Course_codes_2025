@@ -1,0 +1,19 @@
+Input: f, f'(function handles), x0 (float - initial guess), eps_x, eps_f (small, positive floats - tolerances), kMax (positive integer - max nr of iterations)
+
+1. x <- x0
+2. conv <- False
+3. do for i = 1 to kMax:
+   a. r <- f(x)
+   b. dx <- -r/f'(x)
+   c. x += dx
+   d. err <- |dx|; res <- |r|
+   e. if err < eps_x and res < eps_f:
+      i. set conv <- True
+      ii. break
+return x (float - approximate root), err, res (positive floats - error and tolerance of the approximate solution), conv (Boolean - True if and only if the iteration converged).
+
+Note:
+* I used arrow "<-" for assignments to avoid confusion with "=" for equalities.
+* I labeled lines with different symbols depending on the level (outside the loop, inside the loop, inside the if-statement.
+* With the exception of "break" (that has a direct translation into C(++), Fortran and other languages) I did not use Python function names.
+* I used indentation to indicate the range of loops and conditionals. You can also use explicit "end loop" or "end if" statements, brackets or other methods.
