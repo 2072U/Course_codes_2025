@@ -19,7 +19,7 @@ def Gauss(A):
     n = np.shape(A)[0]
     for j in range(1,n):                  # Outer loop over columns.
         # Select the best pivot element (better than picking any non-zero one!):
-        p = np.argmax(abs(B[j-1,j:])) + j # Note that "argmax" returns the index to the vector B[j-1,j:], we add j to get the index to the full column vector.
+        p = np.argmax(abs(B[j-1:,j-1])) + j # Note that "argmax" returns the index to the vector B[j-1,j:], we add j to get the index to the full column vector.
         B = swap(B,j,p)                   # Swap rows so that the diagonal element is greater (in abs value) than the vlues belwo it in the column.
         if abs(B[j-1,j-1]) < small:       # If the best available pivot is still close to 0, print a warning.
             print('Warning: small pivot!')
