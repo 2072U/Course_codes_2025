@@ -21,5 +21,5 @@ def LS(x,y,o):
         for k in range(o-2,-1,-1):
             S = a[k][0] + S * z
         return S
-    return P
+    return P, a
  
